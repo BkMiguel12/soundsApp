@@ -51,4 +51,20 @@ export class HomePage {
     }
   }
 
+  borrar_animal(idx:number){
+    this.animales.splice(idx,1);
+  }
+
+  actualizar_animales(refresher:any){
+    console.log("Inicio del refresh");
+    
+    //Como la operacion la hace muy rapido, se coloca un timeout de 2 segundos para ver la animacion 
+    setTimeout(()=>{
+      console.log("Final del refresh");
+      // Recrea una copia de la lista original
+      this.animales = ANIMALES.slice(0);
+      refresher.complete();
+    },2000);
+  }
+
 }
