@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ANIMALES } from "../../data/data.animales";
 import { Animal } from './../../interfaces/animal.interface';
+import { reorderArray } from "ionic-angular";
 
 @Component({
   selector: 'page-home',
@@ -11,6 +12,7 @@ export class HomePage {
   animales:Animal[] = [];
   audio = new Audio();
   audioTiempo: any;
+  ordenando:boolean = false;
 
   constructor() {
     this.animales = ANIMALES.slice(0);
@@ -65,6 +67,12 @@ export class HomePage {
       this.animales = ANIMALES.slice(0);
       refresher.complete();
     },2000);
+  }
+
+  reordenar_animales(idx:any){
+    console.log(idx);
+
+    this.animales = reorderArray(this.animales, idx);
   }
 
 }
